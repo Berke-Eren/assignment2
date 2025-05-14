@@ -95,7 +95,12 @@ public class Quiz {
     
     public JFrame[] generateArticles(NewsArticle[] articles) {
         JFrame[] frames = new JFrame[articles.length];
-        // create the frames
+        for (int i = 0; i < articles.length; i++) {
+            ArticleFrame newFrame = new ArticleFrame();
+            newFrame.displayArticle(articles[i]);
+            frames[i] = newFrame;
+        }
+        return frames;
     }
     
     public static void writeScoreToFile(String filename, int score) {

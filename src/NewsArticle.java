@@ -43,7 +43,7 @@ public class NewsArticle {
 
     }
     
-    public String getHeadlline(){
+    public String getHeadline(){
         return headline;
     }
     
