@@ -51,8 +51,16 @@ public class NewsArticle {
         return content;
     }
     
-    public String getExplanation(){
+    public String getAdditionalInformation(){
         return additionalInformation;
+    }
+    
+    public String getExplanation() {
+        if (validity) {
+            return "This article is not misleading. The claims are supported by facts";
+        } else {
+            return "This article is misleading";
+        }
     }
     
     public boolean isMisleading(){

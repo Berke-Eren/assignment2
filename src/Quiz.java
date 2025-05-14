@@ -24,14 +24,13 @@ public class Quiz {
     private JFrame titlePage;
     private JFrame finalPage;
     private JFrame[] articleFrames;
-    private int currentFrame = 0;
-    private int score = 0;
+    private static int currentFrame = 0;
+    private static int score = 0;
     
     public Quiz(NewsArticle[] articles, JFrame titlePage, JFrame finalPage) {
         this.articles = articles;
         this.titlePage = titlePage;
         this.finalPage = finalPage;
-        
     }
     
     public static int countLines(String filename) {
@@ -85,7 +84,7 @@ public class Quiz {
                 } else if (type.toLowerCase().equals("lackingfacts")) {
                     articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
                 } else if (type.toLowerCase().equals("fakeexpert")) {
-                    articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
+                    articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
                 }
             }
             count++;
@@ -93,7 +92,7 @@ public class Quiz {
         return articles;
     }
     
-    public JFrame[] generateArticles(NewsArticle[] articles) {
+    public static JFrame[] generateArticles(NewsArticle[] articles) {
         JFrame[] frames = new JFrame[articles.length];
         for (int i = 0; i < articles.length; i++) {
             ArticleFrame newFrame = new ArticleFrame();
@@ -124,11 +123,13 @@ public class Quiz {
         return scores;
     }
     
-    public void displayResults(boolean misleading) {
-        // todo: change labels, display new button, incrememnt score acccordingly
+    public static void displayResults(boolean misleading) {
+        
+        // todo: change labels, display new button
+        score++;
     }
     
-    public void nextPage() {
+    public static void nextPage() {
         currentFrame++;
         // hide current jframe, show the next one
     }

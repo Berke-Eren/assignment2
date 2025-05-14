@@ -29,7 +29,8 @@ public class ArticleFrame extends javax.swing.JFrame {
         content = new javax.swing.JLabel();
         additionalInfoLabel = new javax.swing.JLabel();
         additionalInfoHeader = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        misleadingButton = new javax.swing.JToggleButton();
+        reliableButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,7 +38,23 @@ public class ArticleFrame extends javax.swing.JFrame {
 
         additionalInfoHeader.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jToggleButton1.setText("jToggleButton1");
+        misleadingButton.setBackground(new java.awt.Color(255, 51, 51));
+        misleadingButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        misleadingButton.setText("Misleading");
+        misleadingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                misleadingButtonActionPerformed(evt);
+            }
+        });
+
+        reliableButton1.setBackground(new java.awt.Color(0, 255, 51));
+        reliableButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        reliableButton1.setText("Reliable");
+        reliableButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reliableButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,17 +68,19 @@ public class ArticleFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(56, 56, 56)
-                                        .addComponent(additionalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(additionalInfoHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(57, 57, 57))))
+                                        .addGap(57, 57, 57))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(additionalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(misleadingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(headline, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jToggleButton1)))
+                        .addGap(66, 66, 66)
+                        .addComponent(reliableButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,13 +95,23 @@ public class ArticleFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(additionalInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(misleadingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reliableButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void reliableButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reliableButton1ActionPerformed
+        Quiz.displayResults(true);
+    }//GEN-LAST:event_reliableButton1ActionPerformed
+
+    private void misleadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_misleadingButtonActionPerformed
+        Quiz.displayResults(false);
+    }//GEN-LAST:event_misleadingButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +150,11 @@ public class ArticleFrame extends javax.swing.JFrame {
     
     public void displayArticle(NewsArticle article) {
         headline.setText(article.getHeadline());
-        content
+        content.setText(article.getContent());
+        if (!article.getAdditionalInformation().equals("")) {
+            additionalInfoHeader.setText("Additional Information");
+            additionalInfoLabel.setText(article.getAdditionalInformation());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -129,6 +162,7 @@ public class ArticleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel additionalInfoLabel;
     private javax.swing.JLabel content;
     private javax.swing.JLabel headline;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton misleadingButton;
+    private javax.swing.JToggleButton reliableButton1;
     // End of variables declaration//GEN-END:variables
 }

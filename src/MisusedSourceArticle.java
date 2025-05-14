@@ -19,6 +19,7 @@ public class MisusedSourceArticle extends NewsArticle {
         super(headline, content, validity);
     }
     
+    @Override
     public String getExplanation(){
         return explanation;
     }

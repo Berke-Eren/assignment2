@@ -17,6 +17,7 @@ public class FakeExpertArticle extends NewsArticle {
     public FakeExpertArticle(String headline, String content, boolean validity){
         super(headline, content, validity);
     }
+    
     @Override
     public String getExplanation(){
         return explanation;

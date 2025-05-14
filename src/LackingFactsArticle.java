@@ -18,6 +18,7 @@ public class LackingFactsArticle extends NewsArticle {
         super(headline, content, validity);
     }
     
+    @Override
     public String getExplanation(){
         return explanation;
     }
