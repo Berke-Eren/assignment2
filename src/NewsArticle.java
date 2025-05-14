@@ -63,7 +63,7 @@ public class NewsArticle {
         }
     }
     
-    public boolean isMisleading(){
+    public boolean isValid(){
         return validity;
     }
     

@@ -20,10 +20,11 @@ import java.time.LocalDate;
  */
 public class Quiz {
     // Declare attributes
-    private NewsArticle[] articles;
-    private JFrame titlePage;
-    private JFrame finalPage;
-    private JFrame[] articleFrames;
+    private static NewsArticle[] articles;
+    private static JFrame titlePage;
+    private static JFrame finalPage;
+    private static ExplanationFrame explanationFrame;
+    private static JFrame[] articleFrames;
     private static int currentFrame = 0;
     private static int score = 0;
     
@@ -96,7 +97,7 @@ public class Quiz {
         JFrame[] frames = new JFrame[articles.length];
         for (int i = 0; i < articles.length; i++) {
             ArticleFrame newFrame = new ArticleFrame();
-            newFrame.displayArticle(articles[i]);
+            newFrame.displayArticle(articles[i], score);
             frames[i] = newFrame;
         }
         return frames;
@@ -123,14 +124,40 @@ public class Quiz {
         return scores;
     }
     
-    public static void displayResults(boolean misleading) {
+    public static void displayResults(boolean guess) {
+        explanationFrame = new ExplanationFrame();
+        explanationFrame.setVisible(true);
+        articleFrames[currentFrame - 1].setVisible(false);
+        NewsArticle article = articles[currentFrame - 1];
+        boolean correct = (guess == articles[currentFrame - 1].isValid());
+        if (correct) {
+            score++;
+        }
+        if (article instanceof AppealToEmotionsArticle) {
+            explanationFrame.displayExplanation(((AppealToEmotionsArticle)article).getExplanation(), correct);
+        } else if (article instanceof FakeExpertArticle) {
+            explanationFrame.displayExplanation(((FakeExpertArticle)article).getExplanation(), correct);
+        } else if (article instanceof LackingFactsArticle) {
+            explanationFrame.displayExplanation(((LackingFactsArticle)article).getExplanation(), correct);
+        } else if (article instanceof MisleadingHeadlineArticle) {
+            explanationFrame.displayExplanation(((MisleadingHeadlineArticle)article).getExplanation(), correct);
+        } else if (article instanceof MisusedSourceArticle) {
+            explanationFrame.displayExplanation(((MisusedSourceArticle)article).getExplanation(), correct);
+        }
         
-        // todo: change labels, display new button
-        score++;
     }
     
     public static void nextPage() {
         currentFrame++;
-        // hide current jframe, show the next one
+        if (currentFrame == 0) {
+            titlePage.setVisible(false);
+            articleFrames[currentFrame - 1].setVisible(true);
+        } else if (currentFrame >= 1 && currentFrame <= 11) {
+            explanationFrame.setVisible(false);
+            articleFrames[currentFrame - 1].setVisible(true);
+        } else {
+            explanationFrame.setVisible(false);
+            finalPage.setVisible(true);
+        }
     }
 }

@@ -27,23 +27,43 @@ public class ExplanationFrame extends javax.swing.JFrame {
 
         explanationHeader = new javax.swing.JLabel();
         explanationText = new javax.swing.JLabel();
+        NextPageButton = new javax.swing.JButton();
+        correctOrIncorrect = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         explanationHeader.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         explanationHeader.setText("Explanation");
 
+        NextPageButton.setText("Okay");
+        NextPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextPageButtonActionPerformed(evt);
+            }
+        });
+
+        correctOrIncorrect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(explanationHeader)
-                .addContainerGap(166, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(explanationText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(explanationHeader))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(NextPageButton)))
+                        .addGap(0, 160, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(explanationText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(correctOrIncorrect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -52,12 +72,20 @@ public class ExplanationFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(explanationHeader)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(explanationText, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addComponent(correctOrIncorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(explanationText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(NextPageButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NextPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButtonActionPerformed
+        Quiz.nextPage();
+    }//GEN-LAST:event_NextPageButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,8 +121,19 @@ public class ExplanationFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void displayExplanation(String explanation, boolean correct) {
+        explanationText.setText(explanation);
+        if (correct) {
+            correctOrIncorrect.setText("Correct!");
+        } else {
+            correctOrIncorrect.setText("Incorrect!");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton NextPageButton;
+    private javax.swing.JLabel correctOrIncorrect;
     private javax.swing.JLabel explanationHeader;
     private javax.swing.JLabel explanationText;
     // End of variables declaration//GEN-END:variables
