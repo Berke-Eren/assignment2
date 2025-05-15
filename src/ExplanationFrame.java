@@ -8,11 +8,16 @@
  * @author 344077565
  */
 public class ExplanationFrame extends javax.swing.JFrame {
-
+    private Quiz quiz;
     /**
      * Creates new form ExplanationFrame
      */
     public ExplanationFrame() {
+        initComponents();
+    }
+    
+    public ExplanationFrame(Quiz quiz) {
+        this.quiz = quiz;
         initComponents();
     }
 
@@ -84,7 +89,7 @@ public class ExplanationFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NextPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButtonActionPerformed
-        Quiz.nextPage();
+        quiz.nextPage();
     }//GEN-LAST:event_NextPageButtonActionPerformed
 
     /**

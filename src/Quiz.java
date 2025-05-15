@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.io.File;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,13 +21,13 @@ import java.time.LocalDate;
  */
 public class Quiz {
     // Declare attributes
-    private static NewsArticle[] articles;
-    private static JFrame titlePage;
-    private static JFrame finalPage;
-    private static ExplanationFrame explanationFrame;
-    private static JFrame[] articleFrames;
-    private static int currentFrame = 0;
-    private static int score = 0;
+    private NewsArticle[] articles;
+    private JFrame titlePage;
+    private JFrame finalPage;
+    private ExplanationFrame explanationFrame;
+    private ArticleFrame[] articleFrames;
+    private int currentFrame = 0;
+    private int score = 0;
     
     public Quiz(NewsArticle[] articles, JFrame titlePage, JFrame finalPage) {
         this.articles = articles;
@@ -54,56 +55,59 @@ public class Quiz {
         int numLines = countLines(filename);
         NewsArticle[] articles = new NewsArticle[numLines];
         int count = 0;
-        Scanner fileInput = new Scanner(filename);
-        while (fileInput.hasNext()) {
-            String currentLine = fileInput.nextLine();
-            String[] info = currentLine.split(",");
-            String headline = info[0].trim();
-            String content = info[1].trim();
-            boolean validity = Boolean.parseBoolean(info[2].trim());
-            String type = info[3].trim();
-            if (info.length == 4) {
-                if (type.toLowerCase().equals("misleadingheadline")) {
-                    articles[count] = new MisleadingHeadlineArticle(headline, content, validity);
-                } else if (type.toLowerCase().equals("misusedsource")) {
-                    articles[count] = new MisusedSourceArticle(headline, content, validity);
-                } else if (type.toLowerCase().equals("appealtoemotions")) {
-                    articles[count] = new AppealToEmotionsArticle(headline, content, validity);
-                } else if (type.toLowerCase().equals("lackingfacts")) {
-                    articles[count] = new LackingFactsArticle(headline, content, validity);
-                } else if (type.toLowerCase().equals("fakeexpert")) {
-                    articles[count] = new LackingFactsArticle(headline, content, validity); 
+        try {
+            Scanner fileInput = new Scanner(new File(filename));
+            while (fileInput.hasNext()) {
+                String currentLine = fileInput.nextLine();
+                String[] info = currentLine.split(";");
+                String headline = info[0].trim();
+                String content = info[1].trim();
+                boolean validity = Boolean.parseBoolean(info[2].trim());
+                String type = info[3].trim();
+                if (info.length == 4) {
+                    if (type.toLowerCase().equals("misleadingheadline")) {
+                        articles[count] = new MisleadingHeadlineArticle(headline, content, validity);
+                    } else if (type.toLowerCase().equals("misusedsource")) {
+                        articles[count] = new MisusedSourceArticle(headline, content, validity);
+                    } else if (type.toLowerCase().equals("appealtoemotions")) {
+                        articles[count] = new AppealToEmotionsArticle(headline, content, validity);
+                    } else if (type.toLowerCase().equals("lackingfacts")) {
+                        articles[count] = new LackingFactsArticle(headline, content, validity);
+                    } else if (type.toLowerCase().equals("fakeexpert")) {
+                        articles[count] = new LackingFactsArticle(headline, content, validity); 
+                    }
+                } else {
+                    String explanation = info[4].trim();
+                    if (type.toLowerCase().equals("misleadingheadline")) {
+                        articles[count] = new MisleadingHeadlineArticle(headline, content, validity, explanation);
+                    } else if (type.toLowerCase().equals("misusedsource")) {
+                        articles[count] = new MisusedSourceArticle(headline, content, validity, explanation);
+                    } else if (type.toLowerCase().equals("appealtoemotions")) {
+                        articles[count] = new AppealToEmotionsArticle(headline, content, validity, explanation);
+                    } else if (type.toLowerCase().equals("lackingfacts")) {
+                        articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
+                    } else if (type.toLowerCase().equals("fakeexpert")) {
+                        articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
+                    }
                 }
-            } else {
-                String explanation = info[4].trim();
-                if (type.toLowerCase().equals("misleadingheadline")) {
-                    articles[count] = new MisleadingHeadlineArticle(headline, content, validity, explanation);
-                } else if (type.toLowerCase().equals("misusedsource")) {
-                    articles[count] = new MisusedSourceArticle(headline, content, validity, explanation);
-                } else if (type.toLowerCase().equals("appealtoemotions")) {
-                    articles[count] = new AppealToEmotionsArticle(headline, content, validity, explanation);
-                } else if (type.toLowerCase().equals("lackingfacts")) {
-                    articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
-                } else if (type.toLowerCase().equals("fakeexpert")) {
-                    articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
-                }
-            }
-            count++;
+            } 
+        } catch (IOException e) {
+            System.err.println("Error: " + e);
         }
+        count++;
         return articles;
     }
     
-    public static JFrame[] generateArticles(NewsArticle[] articles) {
-        JFrame[] frames = new JFrame[articles.length];
+    public void generateArticles(NewsArticle[] articles) {
+        ArticleFrame[] frames = new ArticleFrame[articles.length];
         for (int i = 0; i < articles.length; i++) {
-            ArticleFrame newFrame = new ArticleFrame();
-            newFrame.displayArticle(articles[i], score);
+            ArticleFrame newFrame = new ArticleFrame(this);
             frames[i] = newFrame;
         }
-        return frames;
+        articleFrames = frames;
     }
     
-    public static void writeScoreToFile(String filename, int score) {
+    public void writeScoreToFile(String filename, int score) {
         String currentDate = LocalDate.now().toString();
         try {
             FileWriter fileWriter = new FileWriter(filename, true);
@@ -115,7 +119,7 @@ public class Quiz {
         }
     }
     
-    public static String getScoresFromFile(String filename) {
+    public String getScoresFromFile(String filename) {
         String scores = "";
         Scanner fileInput = new Scanner(filename);
         while (fileInput.hasNext()) {
@@ -124,8 +128,8 @@ public class Quiz {
         return scores;
     }
     
-    public static void displayResults(boolean guess) {
-        explanationFrame = new ExplanationFrame();
+    public void displayResults(boolean guess) {
+        explanationFrame = new ExplanationFrame(this);
         explanationFrame.setVisible(true);
         articleFrames[currentFrame - 1].setVisible(false);
         NewsArticle article = articles[currentFrame - 1];
@@ -147,15 +151,18 @@ public class Quiz {
         
     }
     
-    public static void nextPage() {
+    public void nextPage() {
         currentFrame++;
-        if (currentFrame == 0) {
+        if (currentFrame == 1) {
             titlePage.setVisible(false);
             articleFrames[currentFrame - 1].setVisible(true);
-        } else if (currentFrame >= 1 && currentFrame <= 11) {
+            articleFrames[currentFrame - 1].displayArticle(articles[currentFrame - 1], score);
+        } else if (currentFrame >= 2 && currentFrame <= 12) {
             explanationFrame.setVisible(false);
             articleFrames[currentFrame - 1].setVisible(true);
+            articleFrames[currentFrame - 1].displayArticle(articles[currentFrame - 1], score);
         } else {
+            writeScoreToFile("scores.txt", score);
             explanationFrame.setVisible(false);
             finalPage.setVisible(true);
         }

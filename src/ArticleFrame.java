@@ -8,11 +8,16 @@
  * @author 344077565
  */
 public class ArticleFrame extends javax.swing.JFrame {
-
+    private Quiz quiz;
     /**
      * Creates new form ArticleFrame
      */
     public ArticleFrame() {
+        initComponents();
+    }
+    
+    public ArticleFrame(Quiz quiz) {
+        this.quiz = quiz;
         initComponents();
     }
 
@@ -115,11 +120,11 @@ public class ArticleFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reliableButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reliableButton1ActionPerformed
-        Quiz.displayResults(true);
+        quiz.displayResults(true);
     }//GEN-LAST:event_reliableButton1ActionPerformed
 
     private void misleadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_misleadingButtonActionPerformed
-        Quiz.displayResults(false);
+        quiz.displayResults(false);
     }//GEN-LAST:event_misleadingButtonActionPerformed
 
     /**

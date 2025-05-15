@@ -8,11 +8,14 @@
  * @author 344077565
  */
 public class CoverPage extends javax.swing.JFrame {
-
+    private Quiz quiz;
     /**
      * Creates new form CoverPage
      */
     public CoverPage() {
+        NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt");
+        this.quiz = new Quiz(articles, this, new FinalFrame());
+        quiz.generateArticles(articles);
         initComponents();
     }
 
@@ -46,6 +49,11 @@ public class CoverPage extends javax.swing.JFrame {
         startQuizButton.setForeground(new java.awt.Color(255, 255, 255));
         startQuizButton.setText("Take the quiz");
         startQuizButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        startQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startQuizButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -95,6 +103,12 @@ public class CoverPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void startQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startQuizButtonActionPerformed
+        NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt");
+        quiz.generateArticles(articles);
+        quiz.nextPage(); 
+    }//GEN-LAST:event_startQuizButtonActionPerformed
 
     /**
      * @param args the command line arguments
