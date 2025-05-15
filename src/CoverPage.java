@@ -13,9 +13,8 @@ public class CoverPage extends javax.swing.JFrame {
      * Creates new form CoverPage
      */
     public CoverPage() {
-        NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt");
+        NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt", 10);
         this.quiz = new Quiz(articles, this, new FinalFrame());
-        quiz.generateArticles(articles);
         initComponents();
     }
 

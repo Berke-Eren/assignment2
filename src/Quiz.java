@@ -38,19 +38,23 @@ public class Quiz {
     public static int countLines(String filename) {
         // Initialize count variable to track number of lines
         int count = 0;
-        // Create Scanner object to read file
-        Scanner fileInput = new Scanner(filename);
-        // Loop until no lines are left
-        while (fileInput.hasNext()) {
-            // Go to the next line and increase the count
-            fileInput.nextLine();
-            count++;
+        try {
+            // Create Scanner object to read file
+            Scanner fileInput = new Scanner(new File(filename));
+            // Loop until no lines are left
+            while (fileInput.hasNext()) {
+                // Go to the next line and increase the count
+                fileInput.nextLine();
+                count++;
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e);
         }
         // Return the number of lines
         return count;
     }
     
-    public static NewsArticle[] getArticlesFromFile(String filename) {
+    public static NewsArticle[] getArticlesFromFile(String filename, int numArticles) {
         // Get number of lines
         int numLines = countLines(filename);
         NewsArticle[] articles = new NewsArticle[numLines];
@@ -90,11 +94,11 @@ public class Quiz {
                         articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
                     }
                 }
+            count++;
             } 
         } catch (IOException e) {
             System.err.println("Error: " + e);
         }
-        count++;
         return articles;
     }
     
@@ -105,6 +109,7 @@ public class Quiz {
             frames[i] = newFrame;
         }
         articleFrames = frames;
+        System.out.println(articleFrames.length);
     }
     
     public void writeScoreToFile(String filename, int score) {
@@ -153,6 +158,7 @@ public class Quiz {
     
     public void nextPage() {
         currentFrame++;
+        System.out.println(currentFrame);
         if (currentFrame == 1) {
             titlePage.setVisible(false);
             articleFrames[currentFrame - 1].setVisible(true);
