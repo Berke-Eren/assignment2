@@ -26,13 +26,15 @@ public class Quiz {
     private JFrame finalPage;
     private ExplanationFrame explanationFrame;
     private ArticleFrame[] articleFrames;
+    private int numArticles;
     private int currentFrame = 0;
     private int score = 0;
     
-    public Quiz(NewsArticle[] articles, JFrame titlePage, JFrame finalPage) {
+    public Quiz(NewsArticle[] articles, JFrame titlePage, JFrame finalPage, int numArticles) {
         this.articles = articles;
         this.titlePage = titlePage;
         this.finalPage = finalPage;
+        this.numArticles = numArticles;
     }
     
     public static int countLines(String filename) {
@@ -52,6 +54,12 @@ public class Quiz {
         }
         // Return the number of lines
         return count;
+    }
+    
+    public static int[] generateRandomLinesFromFile(int numberOfRandomLines, String filename) {
+        int numLines = countLines(filename);
+        int[] randomLines = new int[numberOfRandomLines];
+
     }
     
     public static NewsArticle[] getArticlesFromFile(String filename, int numArticles) {

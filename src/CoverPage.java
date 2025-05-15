@@ -14,7 +14,8 @@ public class CoverPage extends javax.swing.JFrame {
      */
     public CoverPage() {
         NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt", 10);
-        this.quiz = new Quiz(articles, this, new FinalFrame());
+        this.quiz = new Quiz(articles, this, new FinalFrame(), 10);
+        quiz.generateArticles(articles);
         initComponents();
     }
 
@@ -104,8 +105,6 @@ public class CoverPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startQuizButtonActionPerformed
-        NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt");
-        quiz.generateArticles(articles);
         quiz.nextPage(); 
     }//GEN-LAST:event_startQuizButtonActionPerformed
 
