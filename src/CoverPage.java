@@ -25,17 +25,72 @@ public class CoverPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        coverPageTitle = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        startQuizButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 255));
+
+        coverPageTitle.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        coverPageTitle.setForeground(new java.awt.Color(255, 255, 255));
+        coverPageTitle.setText("Can You Spot the Fake News?");
+
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setText("With the upsurge of social media use, access to information is becoming faster and more widespread.");
+
+        startQuizButton.setBackground(new java.awt.Color(51, 51, 255));
+        startQuizButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        startQuizButton.setForeground(new java.awt.Color(255, 255, 255));
+        startQuizButton.setText("Take the quiz");
+        startQuizButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Consequently, fake news is becoming increasingly rampant and is targeting everyone, including you.");
+
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("Take this quiz to see whether you can identify reliable sources and to learn about common techniques used to spread misinformation.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(coverPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(184, 184, 184))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(startQuizButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(coverPageTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4)
+                .addGap(56, 56, 56)
+                .addComponent(startQuizButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,5 +132,10 @@ public class CoverPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel coverPageTitle;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton startQuizButton;
     // End of variables declaration//GEN-END:variables
 }
