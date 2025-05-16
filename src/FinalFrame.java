@@ -8,7 +8,7 @@
  * @author 348736794
  */
 public class FinalFrame extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FinalFrame
      */
@@ -27,8 +27,10 @@ public class FinalFrame extends javax.swing.JFrame {
 
         finalPageTitle = new javax.swing.JLabel();
         correctQuestion = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        previousScoreLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        previousScores = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,14 +40,17 @@ public class FinalFrame extends javax.swing.JFrame {
 
         correctQuestion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         correctQuestion.setForeground(new java.awt.Color(204, 204, 204));
-        correctQuestion.setText("You got __/__ questions correct.");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("Some common techniques to watch out for include _____");
 
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Now that you know some of the techniques used in fake news, try your best to critically evaluate all future sources you see.");
+
+        previousScoreLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        previousScoreLabel.setText("Previous Scores");
+
+        previousScores.setColumns(20);
+        previousScores.setLineWrap(true);
+        previousScores.setRows(5);
+        jScrollPane1.setViewportView(previousScores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,28 +62,33 @@ public class FinalFrame extends javax.swing.JFrame {
                         .addGap(182, 182, 182)
                         .addComponent(finalPageTitle))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(correctQuestion))
+                        .addGap(308, 308, 308)
+                        .addComponent(previousScoreLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel3))
+                        .addGap(261, 261, 261)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(correctQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(finalPageTitle)
-                .addGap(58, 58, 58)
-                .addComponent(correctQuestion)
-                .addGap(50, 50, 50)
-                .addComponent(jLabel3)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(correctQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(previousScoreLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -118,11 +128,18 @@ public class FinalFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void displayScore(int score, int numQuestions) {
+        correctQuestion.setText("You got " + score + "/" + numQuestions + " questions correct!");
+        previousScores.setText(Quiz.getScoresFromFile("scores.txt"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel correctQuestion;
     private javax.swing.JLabel finalPageTitle;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel previousScoreLabel;
+    private javax.swing.JTextArea previousScores;
     // End of variables declaration//GEN-END:variables
 }

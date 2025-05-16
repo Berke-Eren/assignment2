@@ -31,9 +31,10 @@ public class ExplanationFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         explanationHeader = new javax.swing.JLabel();
-        explanationText = new javax.swing.JLabel();
         NextPageButton = new javax.swing.JButton();
         correctOrIncorrect = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        explanationText = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +50,11 @@ public class ExplanationFrame extends javax.swing.JFrame {
 
         correctOrIncorrect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        explanationText.setColumns(20);
+        explanationText.setLineWrap(true);
+        explanationText.setRows(5);
+        jScrollPane1.setViewportView(explanationText);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,12 +69,12 @@ public class ExplanationFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(149, 149, 149)
                                 .addComponent(NextPageButton)))
-                        .addGap(0, 160, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(explanationText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(correctOrIncorrect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(correctOrIncorrect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -77,10 +83,12 @@ public class ExplanationFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(explanationHeader)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(correctOrIncorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(explanationText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(correctOrIncorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(NextPageButton)
                 .addContainerGap())
         );
@@ -140,6 +148,7 @@ public class ExplanationFrame extends javax.swing.JFrame {
     private javax.swing.JButton NextPageButton;
     private javax.swing.JLabel correctOrIncorrect;
     private javax.swing.JLabel explanationHeader;
-    private javax.swing.JLabel explanationText;
+    private javax.swing.JTextArea explanationText;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

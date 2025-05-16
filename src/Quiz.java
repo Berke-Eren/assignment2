@@ -23,14 +23,14 @@ public class Quiz {
     // Declare attributes
     private NewsArticle[] articles;
     private JFrame titlePage;
-    private JFrame finalPage;
+    private FinalFrame finalPage;
     private ExplanationFrame explanationFrame;
     private ArticleFrame[] articleFrames;
     private int numArticles;
     private int currentFrame = 0;
     private int score = 0;
     
-    public Quiz(NewsArticle[] articles, JFrame titlePage, JFrame finalPage, int numArticles) {
+    public Quiz(NewsArticle[] articles, JFrame titlePage, FinalFrame finalPage, int numArticles) {
         this.articles = articles;
         this.titlePage = titlePage;
         this.finalPage = finalPage;
@@ -56,13 +56,7 @@ public class Quiz {
         return count;
     }
     
-    public static int[] generateRandomLinesFromFile(int numberOfRandomLines, String filename) {
-        int numLines = countLines(filename);
-        int[] randomLines = new int[numberOfRandomLines];
-
-    }
-    
-    public static NewsArticle[] getArticlesFromFile(String filename, int numArticles) {
+    public static NewsArticle[] getArticlesFromFile(String filename) {
         // Get number of lines
         int numLines = countLines(filename);
         NewsArticle[] articles = new NewsArticle[numLines];
@@ -117,7 +111,6 @@ public class Quiz {
             frames[i] = newFrame;
         }
         articleFrames = frames;
-        System.out.println(articleFrames.length);
     }
     
     public void writeScoreToFile(String filename, int score) {
@@ -125,18 +118,22 @@ public class Quiz {
         try {
             FileWriter fileWriter = new FileWriter(filename, true);
             PrintWriter fileOutput = new PrintWriter(fileWriter);
-            fileOutput.printf("%s: %s\n", currentDate, score);
+            fileOutput.printf("%s: %d/%d\n", currentDate, score, numArticles);
             fileOutput.close();
         } catch (IOException e) {
             System.err.println("Error: " + e);
         }
     }
     
-    public String getScoresFromFile(String filename) {
+    public static String getScoresFromFile(String filename) {
         String scores = "";
-        Scanner fileInput = new Scanner(filename);
-        while (fileInput.hasNext()) {
-            scores += (fileInput.nextLine() + "\n");
+        try {
+            Scanner fileInput = new Scanner(new File(filename));
+            while (fileInput.hasNext()) {
+                scores += (fileInput.nextLine() + "\n");
+            }
+        } catch (IOException e) {
+            System.err.println("Error: " + e);
         }
         return scores;
     }
@@ -167,18 +164,20 @@ public class Quiz {
     public void nextPage() {
         currentFrame++;
         System.out.println(currentFrame);
+        System.out.println(numArticles);
         if (currentFrame == 1) {
             titlePage.setVisible(false);
             articleFrames[currentFrame - 1].setVisible(true);
             articleFrames[currentFrame - 1].displayArticle(articles[currentFrame - 1], score);
-        } else if (currentFrame >= 2 && currentFrame <= 12) {
+        } else if (currentFrame >= 2 && currentFrame <= numArticles) {
             explanationFrame.setVisible(false);
             articleFrames[currentFrame - 1].setVisible(true);
             articleFrames[currentFrame - 1].displayArticle(articles[currentFrame - 1], score);
         } else {
-            writeScoreToFile("scores.txt", score);
             explanationFrame.setVisible(false);
             finalPage.setVisible(true);
+            finalPage.displayScore(score, numArticles);
+            writeScoreToFile("scores.txt", score);
         }
     }
 }
