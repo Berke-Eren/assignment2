@@ -132,6 +132,7 @@ public class FinalFrame extends javax.swing.JFrame {
     public void displayScore(int score, int numQuestions) {
         correctQuestion.setText("You got " + score + "/" + numQuestions + " questions correct!");
         previousScores.setText(Quiz.getScoresFromFile("scores.txt"));
+        previousScores.setEditable(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
