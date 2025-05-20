@@ -14,6 +14,7 @@ public class FinalFrame extends javax.swing.JFrame {
      */
     public FinalFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
 
     /**
@@ -39,9 +40,10 @@ public class FinalFrame extends javax.swing.JFrame {
         finalPageTitle.setText("Can You Spot the Fake News?");
 
         correctQuestion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        correctQuestion.setForeground(new java.awt.Color(204, 204, 204));
+        correctQuestion.setForeground(new java.awt.Color(255, 255, 255));
+        correctQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Now that you know some of the techniques used in fake news, try your best to critically evaluate all future sources you see.");
 
         previousScoreLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -68,12 +70,12 @@ public class FinalFrame extends javax.swing.JFrame {
                         .addGap(261, 261, 261)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
+                        .addGap(226, 226, 226)
                         .addComponent(correctQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +131,17 @@ public class FinalFrame extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Displays the user's score and the history of their scores from past attempts.
+     * 
+     * @param score the amount of questions the user got right
+     * @param numQuestions the total number of questions
+     */
     public void displayScore(int score, int numQuestions) {
+        // Display score and score history.
         correctQuestion.setText("You got " + score + "/" + numQuestions + " questions correct!");
         previousScores.setText(Quiz.getScoresFromFile("scores.txt"));
+        // Make the text area showing the score history not editable.
         previousScores.setEditable(false);
     }
 

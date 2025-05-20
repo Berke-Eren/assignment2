@@ -14,11 +14,13 @@ public class ExplanationFrame extends javax.swing.JFrame {
      */
     public ExplanationFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
     
     public ExplanationFrame(Quiz quiz) {
         this.quiz = quiz;
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
 
     /**

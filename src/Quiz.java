@@ -22,7 +22,7 @@ import java.io.File;
 public class Quiz {
     // Declare attributes
     private NewsArticle[] articles;
-    private JFrame titlePage;
+    private CoverPage titlePage;
     private FinalFrame finalPage;
     private ExplanationFrame explanationFrame;
     private ArticleFrame[] articleFrames;
@@ -30,7 +30,7 @@ public class Quiz {
     private int currentFrame = 0;
     private int score = 0;
     
-    public Quiz(NewsArticle[] articles, JFrame titlePage, FinalFrame finalPage, int numArticles) {
+    public Quiz(NewsArticle[] articles, CoverPage titlePage, FinalFrame finalPage, int numArticles) {
         this.articles = articles;
         this.titlePage = titlePage;
         this.finalPage = finalPage;
@@ -177,7 +177,7 @@ public class Quiz {
             explanationFrame.setVisible(false);
             finalPage.setVisible(true);
             finalPage.displayScore(score, numArticles);
-            writeScoreToFile("scores.txt", score);
+            //writeScoreToFile("scores.txt", score);
         }
     }
 }

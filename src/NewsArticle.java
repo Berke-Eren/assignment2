@@ -12,7 +12,7 @@ public class NewsArticle {
     private String content;
     private String additionalInformation;
     private boolean validity;
-    private int numNewsArticles = 0;
+    private static int numNewsArticles = 0;
     private String DEFAULT_HEADLINE = "No Headline";
     private String DEFAULT_CONTENT = "No Content";
     private boolean DEFAULT_VALIDITY = true;
@@ -67,7 +67,7 @@ public class NewsArticle {
         return validity;
     }
     
-    public int getNumNewsArticles(){
+    public static int getNumNewsArticles(){
         return numNewsArticles;
     }
 }

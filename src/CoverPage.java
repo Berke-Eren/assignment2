@@ -17,6 +17,7 @@ public class CoverPage extends javax.swing.JFrame {
         this.quiz = new Quiz(articles, this, new FinalFrame(), Quiz.countLines("articles.txt"));
         quiz.generateArticles(articles);
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
 
     /**
@@ -41,7 +42,7 @@ public class CoverPage extends javax.swing.JFrame {
         coverPageTitle.setForeground(new java.awt.Color(255, 255, 255));
         coverPageTitle.setText("Can You Spot the Fake News?");
 
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("With the upsurge of social media use, access to information is becoming faster and more widespread.");
 
         startQuizButton.setBackground(new java.awt.Color(51, 51, 255));
@@ -56,10 +57,10 @@ public class CoverPage extends javax.swing.JFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Consequently, fake news is becoming increasingly rampant and is targeting everyone, including you.");
 
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Take this quiz to see whether you can identify reliable sources and to learn about common techniques used to spread misinformation.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,9 +82,9 @@ public class CoverPage extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
+                        .addGap(250, 250, 250)
                         .addComponent(startQuizButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -14,11 +14,13 @@ public class ArticleFrame extends javax.swing.JFrame {
      */
     public ArticleFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
     
     public ArticleFrame(Quiz quiz) {
         this.quiz = quiz;
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
 
     /**
