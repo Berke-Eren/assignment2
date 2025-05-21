@@ -5,7 +5,7 @@
 
 /**
  * Stores the information contained in a news article including its headline, content,
- * any additional context, and  whether the article is real or fake.
+ * any additional context, and whether the article is real or fake.
  * 
  * @author Zi Cheng Qiu
  * @version 1.0

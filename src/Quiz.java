@@ -108,6 +108,8 @@ public class Quiz {
                         articles[count] = new LackingFactsArticle(headline, content, validity);
                     } else if (type.toLowerCase().equals("fakeexpert")) {
                         articles[count] = new LackingFactsArticle(headline, content, validity); 
+                    } else if (validity) {
+                        articles[count] = new NewsArticle(headline, content, validity);
                     }
                 // If there are 5 elements in the array, then additional information for the article was provided.
                 // So, the fifth element is read and the constructors with 4 parameters are called.
@@ -123,6 +125,8 @@ public class Quiz {
                         articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
                     } else if (type.toLowerCase().equals("fakeexpert")) {
                         articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
+                    } else if (validity) {
+                        articles[count] = new NewsArticle(headline, content, validity, explanation);
                     }
                 }
             // Increment count
