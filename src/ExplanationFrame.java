@@ -4,11 +4,16 @@
  */
 
 /**
- *
- * @author 344077565
+ * A frame that shows the user why an article is misleading or not misleading.
+ * 
+ * @author Berke Eren
+ * @version 1.0
+ * @since 2025-05-21
  */
 public class ExplanationFrame extends javax.swing.JFrame {
+    // Declare instance variable.
     private Quiz quiz;
+    
     /**
      * Creates new form ExplanationFrame
      */
@@ -17,6 +22,11 @@ public class ExplanationFrame extends javax.swing.JFrame {
         getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
     
+    /**
+     * A parameterized constructor.
+     * 
+     * @param quiz the quiz this frame is a part of
+     */
     public ExplanationFrame(Quiz quiz) {
         this.quiz = quiz;
         initComponents();
@@ -99,6 +109,7 @@ public class ExplanationFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NextPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButtonActionPerformed
+        // Go to the next article.
         quiz.nextPage();
     }//GEN-LAST:event_NextPageButtonActionPerformed
 
@@ -137,10 +148,19 @@ public class ExplanationFrame extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Displays the explanation as to why the user's guess was right or wrong.
+     * 
+     * @param explanation the explanation of why the article is accurate or not
+     * @param correct whether the user guessed correctly or not
+     */
     public void displayExplanation(String explanation, boolean correct) {
+        // Show explanation
         explanationText.setText(explanation);
+        // If the guess was correct, display that to the user.
         if (correct) {
             correctOrIncorrect.setText("Correct!");
+        // If the guess was incorrect, display that to the user.
         } else {
             correctOrIncorrect.setText("Incorrect!");
         }

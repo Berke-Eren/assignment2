@@ -4,19 +4,30 @@
  */
 
 /**
- *
- * @author 344077565
+ * A frame that contains a news article with a headline and content. Allows
+ * the user to guess whether the article is misleading or accurate.
+ * 
+ * @author Berke Eren and Zi Cheng Qiu.
+ * @version 1.0
+ * @since 2025-05-21
  */
 public class ArticleFrame extends javax.swing.JFrame {
+    // Initialize instance variable.
     private Quiz quiz;
+    
     /**
-     * Creates new form ArticleFrame
+     * A constructor with no parameters that sets the background colour of the frame to blue.
      */
     public ArticleFrame() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(0, 166, 255));
     }
     
+    /**
+     * A parameterized constructor that sets the background colour of the frame to blue.
+     * 
+     * @param quiz the quiz that this frame is a part of
+     */
     public ArticleFrame(Quiz quiz) {
         this.quiz = quiz;
         initComponents();
@@ -122,10 +133,12 @@ public class ArticleFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reliableButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reliableButton1ActionPerformed
+        // Display the results of the guess.
         quiz.displayResults(true);
     }//GEN-LAST:event_reliableButton1ActionPerformed
 
     private void misleadingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_misleadingButtonActionPerformed
+        // Display the results of the guess.
         quiz.displayResults(false);
     }//GEN-LAST:event_misleadingButtonActionPerformed
 
@@ -164,13 +177,23 @@ public class ArticleFrame extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Displays the news article including its headline and content.
+     * Also displays the score, and any additional context.
+     * 
+     * @param article the article to display
+     * @param score the user's score
+     */
     public void displayArticle(NewsArticle article, int score) {
+        // Display headline and content.
         headline.setText(article.getHeadline());
         content.setText(article.getContent());
+        // Display score.
+        this.score.setText(score + "/" + quiz.getNumArticles());
+        // Display additional information, if the article has it.
         if (!article.getAdditionalInformation().equals("")) {
             additionalInfoHeader.setText("Additional Information");
-            additionalInfoLabel.setText(article.getAdditionalInformation());
-            this.score.setText(score + "/10");
+            additionalInfoLabel.setText(article.getAdditionalInformation());    
         }
     }
 

@@ -4,8 +4,11 @@
  */
 
 /**
- *
- * @author 348736794
+ * The final frame of the quiz that shows the user their score. 
+ * 
+ * @author Berke Eren and Zi Cheng Qiu
+ * @version 1.0
+ * @since 2025-05-21
  */
 public class FinalFrame extends javax.swing.JFrame {
     

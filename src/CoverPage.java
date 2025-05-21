@@ -4,13 +4,18 @@
  */
 
 /**
- *
- * @author 344077565
+ * The cover page that explains the purpose of the quiz to the user and allows them to begin.
+ * 
+ * @author Berke Eren and Zi Cheng Qiu
+ * @version 1.0
+ * @since 2025-05-21
  */
 public class CoverPage extends javax.swing.JFrame {
+    // Declare instance variable.
     private Quiz quiz;
+    
     /**
-     * Creates new form CoverPage
+     * A constructor with no parameters that creates a quiz, generates articles for the quiz, and instantiates the CoverPage.
      */
     public CoverPage() {
         NewsArticle[] articles = Quiz.getArticlesFromFile("articles.txt");
@@ -106,6 +111,7 @@ public class CoverPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startQuizButtonActionPerformed
+        // Begin the quiz.
         quiz.nextPage(); 
     }//GEN-LAST:event_startQuizButtonActionPerformed
 
