@@ -16,7 +16,7 @@ import java.io.File;
  * 
  * @author Berke Eren
  * @version 1.0
- * @since 2025-05-21
+ * @since 2025-05-22
  */
 public class Quiz {
     // Declare attributes
@@ -30,7 +30,7 @@ public class Quiz {
     private int score = 0;
     
     /**
-     * Parameterized constructor to create a quiz.
+     * Parameterized constructor that creates a quiz.
      * 
      * @param articles an array of NewsArticles
      * @param titlePage the title page frame
@@ -108,7 +108,7 @@ public class Quiz {
                         articles[count] = new LackingFactsArticle(headline, content, validity);
                     } else if (type.toLowerCase().equals("fakeexpert")) {
                         articles[count] = new LackingFactsArticle(headline, content, validity); 
-                    } else if (validity) {
+                    } else if (type.toLowerCase().equals("real")) {
                         articles[count] = new NewsArticle(headline, content, validity);
                     }
                 // If there are 5 elements in the array, then additional information for the article was provided.
@@ -125,7 +125,7 @@ public class Quiz {
                         articles[count] = new LackingFactsArticle(headline, content, validity, explanation);
                     } else if (type.toLowerCase().equals("fakeexpert")) {
                         articles[count] = new FakeExpertArticle(headline, content, validity, explanation);
-                    } else if (validity) {
+                    } else if (type.toLowerCase().equals("real")) {
                         articles[count] = new NewsArticle(headline, content, validity, explanation);
                     }
                 }
@@ -191,7 +191,7 @@ public class Quiz {
      * @return all text in the file as a string, with a newline after each line
      */
     public static String getScoresFromFile(String filename) {
-        // Initialize string.
+        // Initialize String.
         String scores = "";
         try {
             // Create Scanner to read file.
