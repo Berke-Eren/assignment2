@@ -12,7 +12,7 @@
  */
 public class LackingFactsArticle extends NewsArticle {
     // Constant that explains why the article is misleading.
-    private final String explanation = "This article tries to pass off the author's opinion as fact. There is no evidence to support the content of the article.";
+    private final String explanation = "This article is misleading because it tries to pass off the author's opinion as fact. There is no evidence to support the content of the article.";
     
     /**
      * A parameterized constructor that creates an article that has all the necessary 

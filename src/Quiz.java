@@ -238,6 +238,8 @@ public class Quiz {
             explanationFrame.displayExplanation(((MisleadingHeadlineArticle)article).getExplanation(), correct);
         } else if (article instanceof MisusedSourceArticle) {
             explanationFrame.displayExplanation(((MisusedSourceArticle)article).getExplanation(), correct);
+        } else {
+            explanationFrame.displayExplanation(article.getExplanation(), correct);
         }
     }
     
@@ -262,7 +264,7 @@ public class Quiz {
             explanationFrame.setVisible(false);
             finalPage.setVisible(true);
             finalPage.displayScore(score, numArticles);
-            //writeScoreToFile("scores.txt", score);
+            writeScoreToFile("scores.txt", score);
         }
     }
     

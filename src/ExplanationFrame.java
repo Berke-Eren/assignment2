@@ -65,6 +65,7 @@ public class ExplanationFrame extends javax.swing.JFrame {
         explanationText.setColumns(20);
         explanationText.setLineWrap(true);
         explanationText.setRows(5);
+        explanationText.setWrapStyleWord(true);
         jScrollPane1.setViewportView(explanationText);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -55,6 +55,7 @@ public class FinalFrame extends javax.swing.JFrame {
         previousScores.setColumns(20);
         previousScores.setLineWrap(true);
         previousScores.setRows(5);
+        previousScores.setWrapStyleWord(true);
         jScrollPane1.setViewportView(previousScores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

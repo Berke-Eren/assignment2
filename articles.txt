@@ -1,4 +1,10 @@
-Example Article;example content;false;misleadingheadline
-Examp2le Article;ex2ample content;false;misleadingheadline
-Examp3le Article;ex3ample content;false;misleadingheadline
-Random Article;random content;false;misleadingheadline
+Nutritionist Says Eating Dirt Boosts Immunity;An internet personality claiming to be a nutritionist has gone viral for saying that eating dirt can improve gut health and immunity.;false;fakeexpert;No scientific evidence supports this claim, and the person has no formal training in nutrition.
+Research Finds Bees Can Do Basic Math;A study in a scientific journal showed that bees can perform simple arithmetic operations, such as addition and subtraction, using visual cues.;true;real
+Children's Screen Time Linked to Sleep Issues;Research published in Pediatrics found that excessive screen time is associated with delayed sleep onset and reduced sleep duration in children.;true;real
+Newborn Baby Speaks Immediately After Birth;A viral video claims a newborn spoke fluent English seconds after being born. No credible sources support the video’s claims.;false;misleadingheadline
+Electric Vehicles Cut Emissions by More Than Half, Study Finds;New data from a European environmental agency shows that electric vehicles produce over 50% fewer emissions than traditional combustion engines, even when accounting for battery production.;true;real
+Scientists Say Telepathy Is Real;In a recent conference, a physicist shared data from experiments involving brain waves that, he claims, may hint at a rudimentary form of telepathic communication.;false;fakeexpert;The physicist at the conference was found to have fraudulant credentials and did not present any evidence.
+Popular Blog Claims Earth Is Hollow;An article on a blog asserts that the Earth is hollow and houses ancient civilizations.;false;lackingfacts
+Rising Ocean Temperatures Threaten Coral Reefs;A UN report warns that increasing ocean temperatures due to climate change are accelerating coral bleaching and reef degradation worldwide.;true;real
+Aliens Built the Egyptian Pyramids, Says Historian;A popular documentary quotes a historian who claims aliens helped build pyramids.;false;lackingfacts;Mainstream archaeologists reject this claim as pseudoscience.
+Study Finds Regular Exercise Boosts Memory;A study published in Nature Neuroscience found that participants who exercised three times a week showed significant improvements in memory and cognitive performance.;true;real
